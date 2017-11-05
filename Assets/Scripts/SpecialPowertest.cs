@@ -179,6 +179,7 @@ public class SpecialPowertest : MonoBehaviour
 
 	IEnumerator ReturnTo (Vector3 target)
 	{
+		--yoyoRend.positionCount;
 		while (Vector3.SqrMagnitude (yoyoTrans.position - target) > minDistance) {
 			Vector3 newPos = Vector3.MoveTowards (yoyoTrans.position, target, yoyoSpeed * Time.deltaTime);
 			yoyoTrans.position = newPos;
@@ -187,7 +188,6 @@ public class SpecialPowertest : MonoBehaviour
 		}
 		yoyoTrans.position = target;
 		yoyoRend.SetPosition (yoyoRend.positionCount - 1, target);
-		--yoyoRend.positionCount;
 	}
 
 	IEnumerator FireYoyo ()
