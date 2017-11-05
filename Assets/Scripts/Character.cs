@@ -50,52 +50,56 @@ public class Character : MonoBehaviour
     {
         if (!_playerCanMove || Time.timeScale == 0.0f)
             return;
-        
-        //if (!_isPushed)
-        //    _rigidbody.velocity = new Vector2(_movementSpeed, _rigidbody.velocity.y);
 
         _isGrounded = Physics2D.Linecast(_transform.position, _groundCheck.position, _whatIsGround);
         _isPushed = Physics2D.Linecast(_transform.position, _pushCheck.position, _whatIsGround);
 
 
         //------------------------INPUT---------------------------
-        if (Input.GetKeyDown(KeyCode.F1) /*press the time freeze button*/)
+        if (!_isPushed)
         {
-            _timeFreezeActivation = !_timeFreezeActivation;
-            StartTimeFreeze();
-        }
+            if (Input.GetKeyDown(KeyCode.F1) /*press the time freeze button*/)
+            {
+                _timeFreezeActivation = !_timeFreezeActivation;
+                StartTimeFreeze();
+            }
 
-        if(Input.GetKeyDown(KeyCode.F2) && !_isDefend)
-        {
-            DoDefend();
-        }
+            if (Input.GetKeyDown(KeyCode.F2) && !_isDefend)
+            {
+                DoDefend();
+            }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow)) // swipe up
-        {
-            _currentLevel--;
-        }
+            if (Input.GetKeyDown(KeyCode.DownArrow)) // swipe up
+            {
+                _currentLevel--;
+            }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow)) // swipe down
-        {
-            _currentLevel++;
-        }
-        _currentLevel = Mathf.Clamp(_currentLevel, 0, 2);
+            if (Input.GetKeyDown(KeyCode.UpArrow)) // swipe down
+            {
+                _currentLevel++;
+            }
+            _currentLevel = Mathf.Clamp(_currentLevel, 0, 2);
 
 
-        if(_currentLevel == 0)
-        {
-            transform.position = Vector2.MoveTowards(_transform.position, new Vector2(_defaultPosition.x, _defaultPosition.y), _movementSpeed * Time.deltaTime);
-            _rigidbody.gravityScale = 2;
-        }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(_defaultPosition.x, _defaultPosition.y + (_gapPerLevel * _currentLevel)), _movementSpeed * Time.deltaTime);
-            _rigidbody.gravityScale = 0;
+            if (_currentLevel == 0)
+            {
+                transform.position = Vector2.MoveTowards(_transform.position, new Vector2(_defaultPosition.x, _defaultPosition.y), _movementSpeed * Time.deltaTime);
+                _rigidbody.gravityScale = 2;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(_defaultPosition.x, _defaultPosition.y + (_gapPerLevel * _currentLevel)), _movementSpeed * Time.deltaTime);
+                _rigidbody.gravityScale = 0;
+            }
         }
 
         //----------------------ANIMATION-------------------------
         _topPartAnimator.SetBool("isGrounded", _isGrounded);
         _bottomPartAnimator.gameObject.SetActive(_isGrounded);
+
+        _topPartAnimator.SetBool("isPushed", _isPushed);
+        if(_isGrounded)
+            _bottomPartAnimator.SetBool("isPushed", _isPushed);
 
         _topPartAnimator.SetBool("isDefend", _isDefend);
         //_bottomPartAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = !_isDefend;
