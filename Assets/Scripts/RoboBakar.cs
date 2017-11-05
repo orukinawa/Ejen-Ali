@@ -14,10 +14,10 @@ public class RoboBakar : MonoBehaviour
 
 	void Start ()
 	{
-		mTransform = transform;
-		isLeft = Random.Range (0, 1) == 0 ? false : true;
-		delay = Random.Range (0.0f, 0.5f);
-		StartCoroutine (startAfterDelay ());
+		//mTransform = transform;
+		//isLeft = Random.Range (0, 1) == 0 ? false : true;
+		//delay = Random.Range (0.0f, 0.5f);
+		//StartCoroutine (startAfterDelay ());
 	}
 
 	IEnumerator startAfterDelay ()

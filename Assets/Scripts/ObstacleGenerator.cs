@@ -18,8 +18,15 @@ public class ObstacleGenerator : MonoBehaviour
         if (_obj == null)
             return;
 
-        transform.Translate(5.12f, 0.0f, 0.0f);
-         _obj.transform.position = transform.position;
-         _obj.SetActive(true);
+        int i = Random.Range(0, 2);
+
+        if (i == 0)
+            _obj.transform.position = transform.position;
+        if (i == 1)
+            _obj.transform.position = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
+        if (i == 2)
+            _obj.transform.position = new Vector3(transform.position.x, transform.position.y - 5.0f, transform.position.z);
+
+        _obj.SetActive(true);
     }
 }

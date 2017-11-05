@@ -33,7 +33,6 @@ public class Character : MonoBehaviour
     // player tracking
     bool _isGrounded = false;
     bool _isPushed = false;
-    bool _isRunning = false;
     bool _isDefend = false;
     
 
@@ -153,9 +152,9 @@ public class Character : MonoBehaviour
         {
             //FreezeMotion();
             //set animation
+            Destroy(this.gameObject);
 
-            yield return new WaitForSeconds(3.0f);
-
+            yield return new WaitForSeconds(1.0f);
             //reset game or set to check point
         }
     }
