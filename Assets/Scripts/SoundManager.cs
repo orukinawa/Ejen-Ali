@@ -5,7 +5,11 @@ using UnityEngine;
 public enum SFXType
 {
 	CHANGE_LANE,
-	ORB_COLLECT
+	ORB_COLLECT,
+	BAR_FULL,
+	LASER,
+	YOYO_SPIN,
+	LOCK_ON
 }
 
 public class SoundManager : MonoBehaviour

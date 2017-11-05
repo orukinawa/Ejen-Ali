@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23399231407406984}
   - component: {fileID: 114555874336147932}
   - component: {fileID: 114707944095898736}
+  - component: {fileID: 114422081328264510}
   m_Layer: 0
   m_Name: GridBackground
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1388964202762354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 4867947654141688}
   m_RootOrder: 0
@@ -66,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717303222522580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.45, y: 0, z: 0}
-  m_LocalScale: {x: 250, y: 250, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4574758884575736}
   m_Father: {fileID: 0}
@@ -112,6 +113,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717303222522580}
   m_Mesh: {fileID: 0}
+--- !u!114 &114422081328264510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717303222522580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3ca0921412d4e9d9e1e70e72578b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  updateStep: 0.1
+  sampleDataLength: 1024
+  threshold: 0.02
 --- !u!114 &114555874336147932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8c3e05d6f44a34985144f2a5ef7a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GridWidth: 50
-  m_GridHeight: 50
+  m_GridWidth: 150
+  m_GridHeight: 100
   m_GridScale: 0.2
   m_MaxFogDistance: 1
   m_MaxFogAlphaScale: 1
@@ -143,8 +159,8 @@ MonoBehaviour:
   m_EdgeSpringStiffness: 1
   m_EdgeSpringDamping: 0.1
   m_ClampEdges: 1
-  m_LooseSpringStiffness: 0.002
-  m_LooseSpringDamping: 0.002
+  m_LooseSpringStiffness: 0.001
+  m_LooseSpringDamping: 0.001
   m_LooseSpringInterval: 3
   m_RestDistanceScalar: 1
   m_GridSmoothingFactor: 0
@@ -170,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 114555874336147932}
-  force: 0.04
-  radius: 20
+  force: 0.3
+  radius: 10
 --- !u!212 &212969471793336888
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -203,7 +219,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: 2189b452ddaa04fb493bcbc8e9c2d051, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.366}
   m_FlipX: 0
